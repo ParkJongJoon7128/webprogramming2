@@ -1,16 +1,15 @@
 import React from "react";
-import { Route, BrowserRouter } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
-import "./App.css";
-import Header from "./components/Header";
+import MainScreen from "./screens/MainScreen";
 import LoginScreen from "./screens/LoginScreen";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Header />
-      <Route path="/LoginScreen" component={LoginScreen} />
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={<MainScreen />} />
+      <Route path="/login" element={<LoginScreen />} />
+    </Routes>
   );
 };
 export default App;

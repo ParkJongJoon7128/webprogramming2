@@ -5,10 +5,12 @@ import "../designs/Header.css";
 
 const Header = () => {
   return (
-    <header>
+    <div className="Header">
       <h1>웹프로그래밍</h1>
-      <Link to="/LoginScreen"><button>로그인</button></Link>
-    </header>
+      <Link to="/login">
+        <button>로그인</button>
+      </Link>
+    </div>
   );
 };
 

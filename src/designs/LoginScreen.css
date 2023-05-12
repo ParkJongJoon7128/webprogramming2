@@ -1,4 +1,47 @@
-login {
+.LoginBody {
+    display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    /* 부모 요소의 높이를 화면 높이와 같도록 설정 */
+}
+
+.LoginBody>p {
+    font-size: 45px;
+    font-weight: bold;
+    color: black;
+    line-height: 50%;
+}
+
+.LoginBody>.buttonBody {
+    border: 1px solid lightgray;
+    border-radius: 25px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.LoginBody>.buttonBody>button {
+    background-color: white;
+    border: transparent;
+}
+
+.backButton {
+    margin-top: 30px;
+    width: 580px;
+    height: 100px;
+    padding: 0.5rem 1rem;
+    border: 3px solid #1d7cbb;
+    border-radius: 10px;
+    background-color: #0099ff;
+    color: #fff;
+    cursor: pointer;
+    font-size: 35px;
+}
+
+.backButton:hover {
+    background-color: #007acc;
 }

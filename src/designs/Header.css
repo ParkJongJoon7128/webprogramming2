@@ -1,4 +1,4 @@
-header {
+.Header {
     width: auto;
     background-color: white;
     display: flex;
@@ -8,16 +8,16 @@ header {
     border-bottom: 1px solid lightgray;
 }
 
-header button {
+.Header button {
     padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 5px;
-  background-color: #0099ff;
-  color: #fff;
-  font-size: 1rem;
-  cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #0099ff;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
 }
 
-header button:hover {
+.Header button:hover {
     background-color: #007acc;
 }
