@@ -11,7 +11,7 @@ import "../designs/LoginScreen.css";
 const LoginScreen = () => {
   return (
     <div className="LoginBody">
-      <p onCl>로그인을 하세요.</p>
+      <p>로그인을 하세요.</p>
 
       <div className="buttonBody">
         <button>

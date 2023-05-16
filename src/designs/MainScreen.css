@@ -1,0 +1,59 @@
+*{
+    margin-top: 28;
+    margin-left: 37;
+    margin-right: 37;
+    margin-bottom: 37;
+}
+
+.Header {
+    width: auto;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 20px;
+    border-bottom: 1px solid lightgray;
+}
+
+.Body {
+    width: auto;
+    display: flex;
+    margin-top: 44px;
+    padding: 10px;
+}
+
+.Body>.Left_Section {
+    flex: 6;
+    background-color: brown;
+}
+
+.Body>.Right_Section {
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+}
+
+.Right_Section>.Top_Aside {
+    flex: 2;
+}
+
+.Right_Section>.Bottom_Aside {
+    flex: 4;
+    background-color: orange;
+}
+
+.LoginButton {
+    width: 100%;
+    height: auto;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #0099ff;
+    color: #fff;
+    font-size: 3rem;
+    cursor: pointer;
+}
+
+.LoginButton:hover {
+    background-color: #007acc;
+}
