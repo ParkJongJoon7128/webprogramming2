@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import "../designs/MainScreen.css";
 
 import KakaoMap from "../components/KakaoMap";
+import { REST_KEY } from "../datas/KAKAO_Data";
+import axios from "axios";
 
 const MainScreen = () => {
+
+  const KakaoRedirectHandler = () => {
+    useEffect(()=> {
+      let params = new URL(document.location.toString()).searchParams;
+      let code = params.get('code');
+      let grant_type = "authorization_code";
+      let client_id = REST_KEY;
+
+      axios.post(``)
+    }, []);
+  }
+
   return (
     <div>
       <div className="Header">

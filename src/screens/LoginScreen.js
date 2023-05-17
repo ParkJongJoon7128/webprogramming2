@@ -8,9 +8,9 @@ import Naver from "../images/naver.png";
 
 import "../designs/LoginScreen.css";
 
-import { REST_KEY } from "../datas/SNS_Data";
-import { redirect_uri } from "../datas/SNS_Data";
-import { kakaoUrl } from "../datas/SNS_Data";
+import { REST_KEY } from "../datas/KAKAO_Data";
+import { redirect_uri } from "../datas/KAKAO_Data";
+import { kakaoUrl } from "../datas/KAKAO_Data";
 
 const { kakao } = window;
 
