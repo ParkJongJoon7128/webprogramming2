@@ -21,7 +21,7 @@ const MainScreen = () => {
               </Link>
             </div>
             <div className="Bottom_Aside">
-              <KakaoMap />
+               <KakaoMap/>
             </div>
           </section>
         </div>

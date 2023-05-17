@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import Google from "../images/google.png";
@@ -8,7 +8,17 @@ import Naver from "../images/naver.png";
 
 import "../designs/LoginScreen.css";
 
+import { REST_KEY } from "../datas/SNS_Data";
+import { redirect_uri } from "../datas/SNS_Data";
+import { kakaoUrl } from "../datas/SNS_Data";
+
+const { kakao } = window;
+
 const LoginScreen = () => {
+  const kakaoLogin = () => {
+    window.location.href = kakaoUrl;
+  };
+
   return (
     <div className="LoginBody">
       <p>로그인을 하세요.</p>
@@ -17,7 +27,7 @@ const LoginScreen = () => {
         <button>
           <img src={Google} />
         </button>
-        <button>
+        <button onClick={kakaoLogin}>
           <img src={Kakao} />
         </button>
         <button>
@@ -29,7 +39,7 @@ const LoginScreen = () => {
       </div>
 
       <Link to="/">
-      <button className="backButton">메인으로 돌아가기</button>
+        <button className="backButton">메인으로 돌아가기</button>
       </Link>
     </div>
   );
