@@ -1,4 +1,4 @@
-*{
+* {
     margin-top: 28;
     margin-left: 37;
     margin-right: 37;
@@ -17,13 +17,15 @@
 
 .Body {
     width: auto;
+    height: 100vh;
     display: flex;
-    margin-top: 44px;
+    margin-top: 10px;
     padding: 10px;
 }
 
 .Body>.Left_Section {
     flex: 6;
+    margin-right: 10px;
     background-color: brown;
 }
 
@@ -35,16 +37,19 @@
 
 .Right_Section>.Top_Aside {
     flex: 2;
+    margin-bottom: 5px;
 }
 
 .Right_Section>.Bottom_Aside {
     flex: 4;
+    height: 80vh;
+    margin-top: 5px;
     background-color: orange;
 }
 
 .LoginButton {
     width: 100%;
-    height: auto;
+    height: 40vh;
     padding: 0.5rem 1rem;
     border: none;
     border-radius: 5px;

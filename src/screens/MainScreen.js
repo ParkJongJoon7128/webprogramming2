@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 import "../designs/MainScreen.css";
 
+import KakaoMap from "../components/KakaoMap";
+
 const MainScreen = () => {
   return (
     <div>
@@ -18,7 +20,9 @@ const MainScreen = () => {
                 <button className="LoginButton">로그인</button>
               </Link>
             </div>
-            <div className="Bottom_Aside">asdasd</div>
+            <div className="Bottom_Aside">
+              <KakaoMap />
+            </div>
           </section>
         </div>
       </div>
