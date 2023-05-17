@@ -1,24 +1,38 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import "../designs/MainScreen.css";
 
 import KakaoMap from "../components/KakaoMap";
-import { REST_KEY } from "../datas/KAKAO_Data";
-import axios from "axios";
+import { KAKAO_REST_KEY, KAKAO_client_id } from "../datas/Oauth_data";
 
 const MainScreen = () => {
+  useEffect(() => {
+    const KakaoRedirectHandler = async () => {
+      const params = new URL(window.location.toString()).searchParams;
+      const code = params.get("code");
+      const grant_type = "authorization_code";
 
-  const KakaoRedirectHandler = () => {
-    useEffect(()=> {
-      let params = new URL(document.location.toString()).searchParams;
-      let code = params.get('code');
-      let grant_type = "authorization_code";
-      let client_id = REST_KEY;
+      try {
+        const response = await axios.post(
+          `https://kauth.kakao.com/oauth/token?grant_type=${grant_type}&client_id=${KAKAO_client_id}&redirect_uri=http://localhost:3000/oauth/callback/kakao&code=${code}`,
+          {},
+          {
+            headers: {
+              "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
+            },
+          }
+        );
 
-      axios.post(``)
-    }, []);
-  }
+        console.log(response.data); // 토큰 출력
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    KakaoRedirectHandler();
+  }, []);
 
   return (
     <div>
@@ -35,7 +49,7 @@ const MainScreen = () => {
               </Link>
             </div>
             <div className="Bottom_Aside">
-               <KakaoMap/>
+              <KakaoMap />
             </div>
           </section>
         </div>
@@ -44,3 +58,7 @@ const MainScreen = () => {
   );
 };
 export default MainScreen;
+
+
+  // const code = new URL(window.location.href).searchParams.get("code");
+  // console.log(code);

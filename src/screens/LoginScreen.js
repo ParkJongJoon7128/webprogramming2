@@ -8,16 +8,15 @@ import Naver from "../images/naver.png";
 
 import "../designs/LoginScreen.css";
 
-import { REST_KEY } from "../datas/KAKAO_Data";
-import { redirect_uri } from "../datas/KAKAO_Data";
-import { kakaoUrl } from "../datas/KAKAO_Data";
-
-const { kakao } = window;
+import { kakaoUrl } from "../datas/Oauth_data";
 
 const LoginScreen = () => {
-  const kakaoLogin = () => {
-    window.location.href = kakaoUrl;
-  };
+
+  const { kakao } = window;
+
+    const kakaoLogin = () => {
+      window.location.href = kakaoUrl;
+    };
 
   return (
     <div className="LoginBody">
