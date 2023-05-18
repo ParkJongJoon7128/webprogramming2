@@ -1,38 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
 import "../designs/MainScreen.css";
 
 import KakaoMap from "../components/KakaoMap";
-import { KAKAO_REST_KEY, KAKAO_client_id } from "../datas/Oauth_data";
 
 const MainScreen = () => {
-  useEffect(() => {
-    const KakaoRedirectHandler = async () => {
-      const params = new URL(window.location.toString()).searchParams;
-      const code = params.get("code");
-      const grant_type = "authorization_code";
 
-      try {
-        const response = await axios.post(
-          `https://kauth.kakao.com/oauth/token?grant_type=${grant_type}&client_id=${KAKAO_client_id}&redirect_uri=http://localhost:3000/oauth/callback/kakao&code=${code}`,
-          {},
-          {
-            headers: {
-              "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
-            },
-          }
-        );
-
-        console.log(response.data); // 토큰 출력
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    KakaoRedirectHandler();
+  useEffect(()=> {
+    const code = new URL(window.location.href).searchParams.get("code");
+    console.log(code);
   }, []);
+
 
   return (
     <div>
@@ -59,6 +39,30 @@ const MainScreen = () => {
 };
 export default MainScreen;
 
+// useEffect(() => {
+//   const KakaoRedirectHandler = async () => {
+//     const params = new URL(window.location.toString()).searchParams;
+//     const code = params.get("code");
+//     const grant_type = "authorization_code";
 
-  // const code = new URL(window.location.href).searchParams.get("code");
-  // console.log(code);
+//     try {
+//       axios.post(
+//         `https://kauth.kakao.com/oauth/token?
+//         grant_type=${grant_type}
+//         &client_id=${KAKAO_client_id}
+//         &redirect_uri=http://localhost:3000/oauth/callback/kakao
+//         &code=${code}`,
+//         {
+//           headers: {
+//             "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
+//           },
+//         }).then((res)=> {
+//           console.log(res.data); // 토큰 출력
+//         })
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+
+//   KakaoRedirectHandler();
+// }, []);
