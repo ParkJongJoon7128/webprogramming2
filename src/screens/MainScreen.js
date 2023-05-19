@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
 import "../designs/MainScreen.css";
 
@@ -12,7 +11,6 @@ const MainScreen = () => {
     const code = new URL(window.location.href).searchParams.get("code");
     console.log(code);
   }, []);
-
 
   return (
     <div>

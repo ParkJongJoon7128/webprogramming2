@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { GoogleLogin } from "react-google-login";
+import { GoogleLogin } from "@react-oauth/google";
+
 
 import Google from "../images/google.png";
 import Kakao from "../images/kakao.png";
@@ -9,7 +10,12 @@ import Naver from "../images/naver.png";
 
 import "../designs/LoginScreen.css";
 
-import { kakaoUrl, naverUrl, GOOGLE_client_id } from "../datas/Oauth_data";
+import {
+  kakaoUrl,
+  naverUrl,
+  GOOGLE_client_id,
+} from "../datas/Oauth_data";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const LoginScreen = () => {
   const { kakao } = window;
@@ -35,25 +41,22 @@ const LoginScreen = () => {
       <p>로그인을 하세요.</p>
 
       <div className="buttonBody">
-      <GoogleLogin
-            clientId={GOOGLE_client_id}
-            render={renderGoogleButton}
-            buttonText="Google 로그인"
+        <GoogleOAuthProvider clientId={GOOGLE_client_id}>
+          <GoogleLogin
             onSuccess={responseGoogle}
             onFailure={responseGoogle} // 실패 시에도 동작하도록 설정하려면 추가
+            render={renderGoogleButton}
             cookiePolicy={"single_host_origin"}
           />
+        </GoogleOAuthProvider>
+
         <button onClick={kakaoLogin}>
           <img src={Kakao} />
-        </button>
-        <button>
-          <img src={FaceBook} />
         </button>
         <button onClick={naverLogin}>
           <img src={Naver} />
         </button>
       </div>
-
       <Link to="/">
         <button className="backButton">메인으로 돌아가기</button>
       </Link>
