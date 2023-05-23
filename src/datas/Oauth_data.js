@@ -1,6 +1,6 @@
 // kakao
-export const KAKAO_REST_KEY = "d4fdb7bf98bb5470f220cfdc3476ae16";
-export const KAKAO_redirect_uri = "http://localhost:3000/";
+export const KAKAO_REST_KEY = "38f027d991ccfa1ba2c807489c3d2a7b";
+export const KAKAO_redirect_uri = "http://localhost:3000";
 export const KAKAO_client_id = KAKAO_REST_KEY;
 export const kakaoUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_REST_KEY}&redirect_uri=${KAKAO_redirect_uri}&response_type=code`;
 

@@ -9,7 +9,7 @@ const KakaoMap = () => {
   useEffect(() => {
     const container = document.getElementById("map");
     const options = {
-      center: new kakao.maps.LatLng(37.273629699499, 127.12928668205),
+      center: new kakao.maps.LatLng(37.2757, 127.1325),
       level: 3,
     };
 
@@ -17,7 +17,7 @@ const KakaoMap = () => {
 
     // 마커가 표시될 위치입니다
     var markerPosition = new kakao.maps.LatLng(
-      37.273629699499, 127.12928668205
+      37.2757, 127.1325
     );
 
     // 마커를 생성합니다
@@ -29,8 +29,8 @@ const KakaoMap = () => {
     marker.setMap(map);
 
     var iwContent =
-        '<div style="padding:5px;">강남대학교 입구<br><a href="https://map.kakao.com/link/map/강남대학교 입구,37.273629699499, 127.12928668205" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/강남대학교 입구,37.273629699499, 127.12928668205" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-      iwPosition = new kakao.maps.LatLng(37.273629699499, 127.12928668205); //인포윈도우 표시 위치입니다
+        '<div style="padding:5px;">강남대학교<br><a href="https://map.kakao.com/link/map/강남대학교 입구,37.273629699499, 127.12928668205" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/강남대학교 입구,37.273629699499, 127.12928668205" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+      iwPosition = new kakao.maps.LatLng(37.2757, 127.1325); //인포윈도우 표시 위치입니다
 
     // 인포윈도우를 생성합니다
     var infowindow = new kakao.maps.InfoWindow({

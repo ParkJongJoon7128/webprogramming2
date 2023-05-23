@@ -1,15 +1,67 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import "../designs/MainScreen.css";
 
 import KakaoMap from "../components/KakaoMap";
+import { KAKAO_client_id, KAKAO_redirect_uri } from "../datas/Oauth_data";
 
 const MainScreen = () => {
 
-  useEffect(()=> {
-    const code = new URL(window.location.href).searchParams.get("code");
-    console.log(code);
+  useEffect(() => {
+    const params = new URL(window.location.href).searchParams
+    const code = params.get("code");
+    const grant_type = "authorization_code";
+  
+    const getToken = async () => {
+      try {
+        const response = await axios.post(
+          // `https://kauth.kakao.com/oauth/token`,
+          `https://kauth.kakao.com/oauth/token?grant_type=${grant_type}&client_id=${KAKAO_client_id}&redirect_uri=${KAKAO_redirect_uri}&code=${code}`,
+          {
+            // grant_type: grant_type,
+            // client_id: KAKAO_client_id,
+            // redirect_uri: KAKAO_redirect_uri,
+            // code: code,
+          },
+          {
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
+              //Authorization: `Bearer ${YOUR_ACCESS_TOKEN}`,
+            },
+          }
+        ).then((res) => {
+          console.log(res);
+          const { data } = res;
+          const { access_token } = data;
+
+          if(access_token){
+            console.log(`Bearer ${access_token}`);
+            axios.post(
+              "https://kapi.kakao.com/v2/user/me",
+              {},
+              {
+                headers: {
+                  "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
+                  Authorization: `Bearer ${access_token}`,
+                },
+              }
+            ).then((res) => {
+              console.log(res.data);
+            });
+          } else{
+            console.log("there is no access_token");
+          }
+        })
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  
+    if (code) {
+      getToken();
+    }
   }, []);
 
   return (
@@ -37,30 +89,37 @@ const MainScreen = () => {
 };
 export default MainScreen;
 
-// useEffect(() => {
-//   const KakaoRedirectHandler = async () => {
-//     const params = new URL(window.location.toString()).searchParams;
-//     const code = params.get("code");
-//     const grant_type = "authorization_code";
-
-//     try {
-//       axios.post(
-//         `https://kauth.kakao.com/oauth/token?
-//         grant_type=${grant_type}
-//         &client_id=${KAKAO_client_id}
-//         &redirect_uri=http://localhost:3000/oauth/callback/kakao
-//         &code=${code}`,
-//         {
-//           headers: {
-//             "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
-//           },
-//         }).then((res)=> {
-//           console.log(res.data); // 토큰 출력
-//         })
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-
-//   KakaoRedirectHandler();
+// useEffect(()=> {
+//   const code = new URL(window.location.href).searchParams.get("code");
+//   console.log(code);
 // }, []);
+
+// const KakaoRedirectHandler = async () => {
+// const params = new URL(window.location.toString()).searchParams;
+// const code = params.get("code");
+// const grant_type = "authorization_code";
+
+//   try {
+//     axios
+//       .post(
+//         `https://kauth.kakao.com/oauth/token?
+//     grant_type=${grant_type}
+//     &client_id=${KAKAO_client_id}
+//     &redirect_uri=http://localhost:3000/oauth/callback/kakao
+//     &code=${code}`,
+//         {
+// headers: {
+//   "Content-type":
+//     "application/x-www-form-urlencoded;charset=utf-8",
+// },
+//         }
+//       )
+//       .then((res) => {
+//         console.log(res.data); // 토큰 출력
+//       });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
+// KakaoRedirectHandler();

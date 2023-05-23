@@ -24,37 +24,14 @@ const LoginScreen = () => {
     window.location.href = kakaoUrl;
   };
 
-  const naverLogin = () => {
-    window.location.href = naverUrl;
-  };
-
-  const responseGoogle = (response) => {
-    console.log(response); // 로그인 성공 시 구글 사용자 정보 출력
-  };
-
-  const renderGoogleButton = ({ onClick }) => (
-    <img src={Google} alt="Google" onClick={onClick} />
-  );
-
   return (
     <div className="LoginBody">
       <p>로그인을 하세요.</p>
 
       <div className="buttonBody">
-        <GoogleOAuthProvider clientId={GOOGLE_client_id}>
-          <GoogleLogin
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle} // 실패 시에도 동작하도록 설정하려면 추가
-            render={renderGoogleButton}
-            cookiePolicy={"single_host_origin"}
-          />
-        </GoogleOAuthProvider>
 
         <button onClick={kakaoLogin}>
           <img src={Kakao} />
-        </button>
-        <button onClick={naverLogin}>
-          <img src={Naver} />
         </button>
       </div>
       <Link to="/">
@@ -65,3 +42,32 @@ const LoginScreen = () => {
 };
 
 export default LoginScreen;
+
+
+
+
+  // const naverLogin = () => {
+  //   window.location.href = naverUrl;
+  // };
+
+  // const responseGoogle = (response) => {
+  //   console.log(response); // 로그인 성공 시 구글 사용자 정보 출력
+  // };
+
+  // const renderGoogleButton = ({ onClick }) => (
+  //   <img src={Google} alt="Google" onClick={onClick} />
+  // );
+
+          {/* <GoogleOAuthProvider clientId={GOOGLE_client_id}>
+          <GoogleLogin
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle} // 실패 시에도 동작하도록 설정하려면 추가
+            render={renderGoogleButton}
+            cookiePolicy={"single_host_origin"}
+          />
+        </GoogleOAuthProvider> */}
+
+
+          {/* <button onClick={naverLogin}>
+          <img src={Naver} />
+        </button> */}
