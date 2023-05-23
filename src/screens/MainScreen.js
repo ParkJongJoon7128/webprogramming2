@@ -48,7 +48,7 @@ const MainScreen = () => {
                 },
               }
             ).then((res) => {
-              console.log(res.data);
+              console.log(res);
             });
           } else{
             console.log("there is no access_token");
