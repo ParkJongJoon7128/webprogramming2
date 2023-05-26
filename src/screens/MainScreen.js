@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -8,6 +8,9 @@ import KakaoMap from "../components/KakaoMap";
 import { KAKAO_client_id, KAKAO_redirect_uri } from "../datas/Oauth_data";
 
 const MainScreen = () => {
+
+  const [loginButtonText, setLoginButtonText] = useState("로그인"); // 상태 추가
+  const [showText, setShowText] = useState("");
 
   useEffect(() => {
     const params = new URL(window.location.href).searchParams
@@ -49,6 +52,8 @@ const MainScreen = () => {
               }
             ).then((res) => {
               console.log(res);
+              setLoginButtonText(res.data.properties.nickname);
+              setShowText("환영합니다");
             });
           } else{
             console.log("there is no access_token");
@@ -75,7 +80,8 @@ const MainScreen = () => {
           <section className="Right_Section">
             <div className="Top_Aside">
               <Link to="/login">
-                <button className="LoginButton">로그인</button>
+                {/* <button className="LoginButton">로그인</button> */}
+                <button className="LoginButton">{loginButtonText} <br/> {showText}</button>
               </Link>
             </div>
             <div className="Bottom_Aside">
